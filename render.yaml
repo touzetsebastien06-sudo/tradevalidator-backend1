@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: tradevalidator-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn server:app --workers 1 --timeout 120 --bind 0.0.0.0:$PORT
+    envVars:
+      - key: FINNHUB_KEY
+        value: d7prfc1r01qosaapn1cgd7prfc1r01qosaapn1d0
+      - key: TWELVE_KEY
+        value: ac36438cc83248c3bfb2ea719aadeba0
+      - key: RENDER
+        value: true
+    plan: free
